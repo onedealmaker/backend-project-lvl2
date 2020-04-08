@@ -1,0 +1,32 @@
+{
+  "name": "gendiff",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "gendiff": "src/bin/gendiff.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onedealmaker/backend-project-lvl2.git"
+  },
+  "author": "dealmaker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/onedealmaker/backend-project-lvl2/issues"
+  },
+  "homepage": "https://github.com/onedealmaker/backend-project-lvl2#readme",
+  "dependencies": {
+    "commander": "^5.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-proposal-pipeline-operator": "^7.8.3",
+    "@babel/preset-env": "^7.9.5"
+  }
+}
