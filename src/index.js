@@ -14,12 +14,12 @@ export default (before, after) => {
     const showDiff = mergeKeys.map((key) => {
         if (before[key] === after[key]) {
             return makeString('unchanged', key, before[key]);
-        } if (before.hasOwnProperty(key) && !after.hasOwnProperty(key)) {
-            return makeString('added', key, before[key]);
         } if (!before.hasOwnProperty(key) && after.hasOwnProperty(key)) {
+            return makeString('added', key, after[key]);
+        } if (before.hasOwnProperty(key) && !after.hasOwnProperty(key)) {
             return makeString('deleted', key, before[key]);
         }
-        return `${makeString('deleted', key, before[key])}${makeString('added', key, after[key])}`;
+        return `${makeString('added', key, after[key])}${makeString('deleted', key, before[key])}`;
     });
-    return `{\n${showDiff}}`;
+    return `{\n${showDiff.join('')}}`;
 };
