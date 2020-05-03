@@ -1,8 +1,8 @@
 import fs from 'fs';
-import genDiff from '../src/index.js';
+import genDiff from '../src/index';
 
-const before = JSON.parse(fs.readFileSync('__tests__/before.json', 'utf-8'));
-const after = JSON.parse(fs.readFileSync('__tests__/after.json', 'utf-8'));
+const before = '/home/alexander/Projects/gendiff/__tests__/before.json';
+const after = '/home/alexander/Projects/gendiff/__tests__/after.json';
 const result = fs.readFileSync('__tests__/result.txt', 'utf-8');
 
 test('generate difference', () => {

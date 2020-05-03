@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/onedealmaker/backend-project-lvl2#readme",
   "dependencies": {
-    "commander": "^5.0.0"
+    "@jest/globals": "^25.5.2",
+    "commander": "^5.0.0",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
