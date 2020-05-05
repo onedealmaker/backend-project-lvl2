@@ -12,6 +12,7 @@ const getData = (pathToFile) => {
   const absPath = path.isAbsolute(pathToFile)
     ? pathToFile
     : path.resolve(process.cwd(), pathToFile);
+    
   return JSON.parse(fs.readFileSync(absPath, 'utf-8'));
 };
 const getPropState = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
