@@ -1,5 +1,4 @@
-import path from 'path';
-import fs from 'fs';
+import parse from './parsers';
 
 const stateDifiner = {
   unchanged: '    ',
@@ -8,13 +7,7 @@ const stateDifiner = {
 };
 
 const makeString = (status, key, value) => `${stateDifiner[status]}${key}: ${value}\n`;
-const getData = (pathToFile) => {
-  const absPath = path.isAbsolute(pathToFile)
-    ? pathToFile
-    : path.resolve(process.cwd(), pathToFile);
-
-  return JSON.parse(fs.readFileSync(absPath, 'utf-8'));
-};
+const getData = (pathToFile) => parse(pathToFile);
 const getPropState = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
 
 export default (pathToFileBefore, pathToFileAfter) => {
