@@ -14,9 +14,7 @@ test('generate difference (flatten JSON)', () => {
 });
 test('generate difference (flatten YAML)', () => {
   expect(genDiff(beforeYaml, afterYaml)).toEqual(result);
-  expect(genDiff(beforeJson, afterYaml)).toEqual(result);
 });
 test('generate difference (flatten INI)', () => {
   expect(genDiff(beforeIni, afterIni)).toEqual(result);
-  expect(genDiff(beforeYaml, afterIni)).toEqual(result);
 });
