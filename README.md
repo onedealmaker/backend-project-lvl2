@@ -9,5 +9,9 @@ Find difference between two config files.
 $ npm install gendiff_likhvar
 ```
 
-## execute example
+## execute examples:
+### JSON:
 [![asciicast](https://asciinema.org/a/326977.svg)](https://asciinema.org/a/326977)
+
+### YAML:
+[![asciicast](https://asciinema.org/a/328272.svg)](https://asciinema.org/a/328272)
