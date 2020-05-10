@@ -11,7 +11,10 @@ $ npm install gendiff_likhvar
 
 ## execute examples:
 ### JSON:
-[![asciicast](https://asciinema.org/a/326977.svg)](https://asciinema.org/a/326977)
+[![asciicast](https://asciinema.org/a/328580.svg)](https://asciinema.org/a/328580)
 
 ### YAML:
-[![asciicast](https://asciinema.org/a/328272.svg)](https://asciinema.org/a/328272)
+[![asciicast](https://asciinema.org/a/328581.svg)](https://asciinema.org/a/328581)
+
+### INI:
+[![asciicast](https://asciinema.org/a/328582.svg)](https://asciinema.org/a/328582)
