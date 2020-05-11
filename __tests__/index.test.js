@@ -1,20 +1,20 @@
 import fs from 'fs';
 import genDiff from '../src/index';
 
-const beforeJson = '__fixtures__/before.json';
-const afterJson = '__fixtures__/after.json';
-const beforeYaml = '__fixtures__/before.yml';
-const afterYaml = '__fixtures__/after.yml';
-const beforeIni = '__fixtures__/before.ini';
-const afterIni = '__fixtures__/after.ini';
-const result = fs.readFileSync('__fixtures__/result.txt', 'utf-8');
+const beforeJson = '__fixtures__/flatten/before.json';
+const afterJson = '__fixtures__/flatten/after.json';
+const beforeYaml = '__fixtures__/flatten/before.yml';
+const afterYaml = '__fixtures__/flatten/after.yml';
+const beforeIni = '__fixtures__/flatten/before.ini';
+const afterIni = '__fixtures__/flatten/after.ini';
+const result = fs.readFileSync('__fixtures__/flatten/result.txt', 'utf-8');
 
-test('generate difference (flatten JSON)', () => {
+test('generate difference (flat JSON)', () => {
   expect(genDiff(beforeJson, afterJson)).toEqual(result);
 });
-test('generate difference (flatten YAML)', () => {
+test('generate difference (flat YAML)', () => {
   expect(genDiff(beforeYaml, afterYaml)).toEqual(result);
 });
-test('generate difference (flatten INI)', () => {
+test('generate difference (flat INI)', () => {
   expect(genDiff(beforeIni, afterIni)).toEqual(result);
 });
