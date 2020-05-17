@@ -1,24 +1,15 @@
 import fs from 'fs';
+import path from 'path';
 import genDiff from '../src/index';
 
-const flatData = [
-  ['__fixtures__/flatten/before.json', '__fixtures__/flatten/after.json'],
-  ['__fixtures__/flatten/before.yml', '__fixtures__/flatten/after.yml'],
-  ['__fixtures__/flatten/before.ini', '__fixtures__/flatten/after.ini'],
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const fileNames = [
+  ['before.json', 'after.json'],
+  ['before.yml', 'after.yml'],
+  ['before.ini', 'after.ini'],
 ];
-const nestedData = [
-  ['__fixtures__/nested/before.json', '__fixtures__/nested/after.json'],
-  ['__fixtures__/nested/before.yml', '__fixtures__/nested/after.yml'],
-  ['__fixtures__/nested/before.ini', '__fixtures__/nested/after.ini'],
-];
-const result = {
-  flat: fs.readFileSync('__fixtures__/flatten/result.txt', 'utf-8'),
-  tree: fs.readFileSync('__fixtures__/nested/result.txt', 'utf-8'),
-};
+const result = fs.readFileSync(getFixturePath('result.txt'), 'utf-8');
 
-test.each(flatData)('generate difference (flat)', (a, b) => {
-  expect(genDiff(a, b)).toBe(result.flat);
-});
-test.each(nestedData)('generate difference (nested)', (a, b) => {
-  expect(genDiff(a, b)).toBe(result.tree);
+test.each(fileNames)('generate difference', (b, a) => {
+  expect(genDiff(getFixturePath(b), getFixturePath(a))).toBe(result);
 });
