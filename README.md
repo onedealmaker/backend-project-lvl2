@@ -6,7 +6,12 @@ Find difference between two config files.
 
 ## setup
 ```sh
-$ npm install gendiff_likhvar
+$ git clone https://github.com/onedealmaker/backend-project-lvl2.git
+```
+Then from clonned directory:
+```sh
+$ make install
+$ make publish
 ```
 
 ## execute examples:
