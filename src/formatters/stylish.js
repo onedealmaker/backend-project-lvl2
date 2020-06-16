@@ -7,11 +7,7 @@ const displayNode = (node, depth) => {
   if (_.isObject(node)) {
     const stringify = Object.keys(node).map((key) => `${addTab(depth + 2)}${key}: ${node[key]}`);
     return `{${addNewLine}${stringify.join(addNewLine)}${addNewLine}${addTab(depth)}}`;
-<<<<<<< HEAD
   }
-=======
-  };
->>>>>>> a31b81be4ea8c9ded1c2c4a46e00f3d7a6b2750e
   return node;
 };
 
