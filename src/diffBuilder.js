@@ -2,10 +2,10 @@ import _ from 'lodash';
 
 const buildNode = (before, after, key, func) => {
   if (!(_.has(after, key))) {
-    return { key, value: before[key], status: 'deleted' };
+    return { key, beforeValue: before[key], status: 'deleted' };
   }
   if (!(_.has(before, key))) {
-    return { key, value: after[key], status: 'added' };
+    return { key, afterValue: after[key], status: 'added' };
   }
   if (_.isEqual(before[key], after[key])) {
     return { key, value: before[key], status: 'unchanged' };
