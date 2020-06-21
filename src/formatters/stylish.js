@@ -13,14 +13,11 @@ const displayNode = (node, depth) => {
 
 const displayNested = (ast, depth = 0) => {
   const refByStatus = {
-    deleted: (node, level) => `${addTab(level + 1)}- ${node.key}: ${displayNode(node.beforeValue, level + 2)}`,
-    added: (node, level) => `${addTab(level + 1)}+ ${node.key}: ${displayNode(node.afterValue, level + 2)}`,
-    unchanged: (node, level) => `${addTab(level + 2)}${node.key}: ${displayNode(node.value, level + 2)}`,
-    nested: (node, level) => `${addTab(level + 2)}${node.key}: ${displayNested(node.children, level + 2)}`,
-    changed: (node, level) => [
-      [refByStatus.deleted(node, level)],
-      [refByStatus.added(node, level)],
-    ],
+    deleted: (node, lvl) => `${addTab(lvl + 1)}- ${node.key}: ${displayNode(node.beforeValue, lvl + 2)}`,
+    added: (node, lvl) => `${addTab(lvl + 1)}+ ${node.key}: ${displayNode(node.afterValue, lvl + 2)}`,
+    unchanged: (node, lvl) => `${addTab(lvl + 2)}${node.key}: ${displayNode(node.value, lvl + 2)}`,
+    nested: (node, lvl) => `${addTab(lvl + 2)}${node.key}: ${displayNested(node.children, lvl + 2)}`,
+    changed: (node, lvl) => [[refByStatus.deleted(node, lvl)], [refByStatus.added(node, lvl)]],
   };
   const stringifyNodes = ast.flatMap((node) => refByStatus[node.status](node, depth));
   const result = stringifyNodes.join(addNewLine);
