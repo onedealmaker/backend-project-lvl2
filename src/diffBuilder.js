@@ -1,18 +1,20 @@
 import _ from 'lodash';
 
 const numberTypeDefiner = (node) => {
-  const checkNode = (node) => Object.keys(node).reduce((acc, key) => {
-    if (_.isObject(node[key])) {
-      return checkNode(node[key]);
-    };
+  const checkNode = (currentNode) => Object.keys(currentNode).reduce((acc, key) => {
+    if (_.isObject(currentNode[key])) {
+      return checkNode(currentNode[key]);
+    }
     const num = parseInt(node[key], 10);
+    // eslint-disable-next-line eqeqeq
     const newValue = (num == node[key] ? num : node[key]);
     return { ...acc, [key]: newValue };
   }, {});
   if (_.isObject(node)) {
     return checkNode(node);
-  };
+  }
   const number = parseInt(node, 10);
+  // eslint-disable-next-line eqeqeq
   const newValue = number == node ? number : node;
   return newValue;
 };
