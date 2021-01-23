@@ -11,7 +11,7 @@ const displayNode = (node, depth) => {
   return node;
 };
 
-const displayNested = (ast, depth = 0) => {
+const displayNested = (absTree, depth = 0) => {
   const refByStatus = {
     deleted: (node, lvl) => `${addTab(lvl + 1)}- ${node.key}: ${displayNode(node.beforeValue, lvl + 2)}`,
     added: (node, lvl) => `${addTab(lvl + 1)}+ ${node.key}: ${displayNode(node.afterValue, lvl + 2)}`,
@@ -19,7 +19,7 @@ const displayNested = (ast, depth = 0) => {
     nested: (node, lvl) => `${addTab(lvl + 2)}${node.key}: ${displayNested(node.children, lvl + 2)}`,
     changed: (node, lvl) => [[refByStatus.deleted(node, lvl)], [refByStatus.added(node, lvl)]],
   };
-  const stringifyNodes = ast.flatMap((node) => refByStatus[node.status](node, depth));
+  const stringifyNodes = absTree.flatMap((node) => refByStatus[node.status](node, depth));
   const result = stringifyNodes.join(addNewLine);
   return `{${addNewLine}${result}${addNewLine}${addTab(depth)}}`;
 };

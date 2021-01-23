@@ -2,14 +2,14 @@ import program from 'commander';
 import { version, description } from '../package.json';
 import parse from './parsers';
 import buildDiff from './diffBuilder';
-import stylish from './formatters/stylish';
+import formatter from './formatters/index';
 
 const getData = (pathToFile) => parse(pathToFile);
-export const genDiff = (pathToFileBefore, pathToFileAfter, formatter = stylish) => {
+export const genDiff = (pathToFileBefore, pathToFileAfter, format = 'stylish') => {
   const before = getData(pathToFileBefore);
   const after = getData(pathToFileAfter);
   const difference = buildDiff(before, after);
-  return formatter(difference);
+  return formatter[format](difference);
 };
 
 export default () => {

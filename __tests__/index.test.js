@@ -8,8 +8,16 @@ const fileNames = [
   ['before.yml', 'after.yml'],
   ['before.ini', 'after.ini'],
 ];
-const result = fs.readFileSync(getFixturePath('result.txt'), 'utf-8');
+const resultStylish = fs.readFileSync(getFixturePath('resultStylish.txt'), 'utf-8');
+const resultPlain = fs.readFileSync(getFixturePath('resultPlain.txt'), 'utf-8');
+const resultJSON = fs.readFileSync(getFixturePath('resultJSON.txt'), 'utf-8');
 
-test.each(fileNames)('generate difference', (b, a) => {
-  expect(genDiff(getFixturePath(b), getFixturePath(a))).toBe(result);
+test.each(fileNames)('generate difference (Stylish format)', (b, a) => {
+  expect(genDiff(getFixturePath(b), getFixturePath(a), 'stylish')).toBe(resultStylish);
+});
+test.each(fileNames)('generate difference (Plain format)', (b, a) => {
+  expect(genDiff(getFixturePath(b), getFixturePath(a), 'plain')).toBe(resultPlain);
+});
+test.each(fileNames)('generate difference (JSON format)', (b, a) => {
+  expect(genDiff(getFixturePath(b), getFixturePath(a), 'json')).toBe(resultJSON);
 });
