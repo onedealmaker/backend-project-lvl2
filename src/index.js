@@ -18,7 +18,6 @@ export default () => {
     .description(description)
     .arguments('<firstConfig> <secondConfig>')
     .action((firstConfig, secondConfig) => {
-      console.log 
       console.log(genDiff(firstConfig, secondConfig, program.format));
     })
     .option('-f, --format [type]', 'output format', 'stylish')
