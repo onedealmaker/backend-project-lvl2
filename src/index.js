@@ -6,6 +6,7 @@ import formatter from './formatters/index';
 
 const getData = (pathToFile) => parse(pathToFile);
 export const genDiff = (pathToFileBefore, pathToFileAfter, format) => {
+  console.log(format);
   const before = getData(pathToFileBefore);
   const after = getData(pathToFileAfter);
   const difference = buildDiff(before, after);
@@ -18,8 +19,9 @@ export default () => {
     .description(description)
     .arguments('<firstConfig> <secondConfig>')
     .action((firstConfig, secondConfig) => {
+      console.log 
       console.log(genDiff(firstConfig, secondConfig, program.format));
     })
-    .option('-f, --format [type]', 'output format', stylish)
+    .option('-f, --format [type]', 'output format', 'stylish')
     .parse(process.argv);
 };
