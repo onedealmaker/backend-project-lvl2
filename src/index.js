@@ -6,7 +6,6 @@ import formatter from './formatters/index';
 
 const getData = (pathToFile) => parse(pathToFile);
 export const genDiff = (pathToFileBefore, pathToFileAfter, format) => {
-  console.log(format);
   const before = getData(pathToFileBefore);
   const after = getData(pathToFileAfter);
   const difference = buildDiff(before, after);
