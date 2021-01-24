@@ -23,3 +23,8 @@ $ make publish
 
 ### INI:
 [![asciicast](https://asciinema.org/a/328582.svg)](https://asciinema.org/a/328582)
+
+## Also you can change an output format:
+1. format 'stylish' - has output as in examles before: tree-like with displaying all elements and their changes.
+1. format 'plain' - text output, displaying information only about changes.
+1. format 'json' - output in JSON format with information about all elements and changes.
