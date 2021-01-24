@@ -16,9 +16,9 @@ export default () => {
   program
     .version(version)
     .description(description)
-    .arguments('<firstConfig> <secondConfig> [format]')
-    .action((firstConfig, secondConfig, format) => {
-      console.log(genDiff(firstConfig, secondConfig, format));
+    .arguments('<firstConfig> <secondConfig>')
+    .action((firstConfig, secondConfig) => {
+      console.log(genDiff(firstConfig, secondConfig, program.format));
     })
     .option('-f, --format [type]', 'output format')
     .parse(process.argv);

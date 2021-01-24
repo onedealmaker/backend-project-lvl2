@@ -28,3 +28,4 @@ $ make publish
 1. format 'stylish' - has output as in examles before: tree-like with displaying all elements and their changes.
 1. format 'plain' - text output, displaying information only about changes.
 1. format 'json' - output in JSON format with information about all elements and changes.
+
