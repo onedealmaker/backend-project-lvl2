@@ -16,7 +16,7 @@ export default () => {
   program
     .version(version)
     .description(description)
-    .arguments('<firstConfig> <secondConfig>')
+    .arguments('<firstConfig> <secondConfig> [format]')
     .action((firstConfig, secondConfig, format) => {
       console.log(genDiff(firstConfig, secondConfig, format));
     })
