@@ -21,6 +21,7 @@
     "url": "https://github.com/onedealmaker/backend-project-lvl2/issues"
   },
   "homepage": "https://github.com/onedealmaker/backend-project-lvl2#readme",
+  "type": "module",
   "dependencies": {
     "commander": "^5.0.0",
     "ini": "^1.3.5",
