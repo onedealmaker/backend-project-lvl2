@@ -1,5 +1,4 @@
 import program from 'commander';
-import { version, description } from '../package.json';
 import parse from './parsers';
 import buildDiff from './diffBuilder';
 import formatter from './formatters/index';
@@ -14,11 +13,11 @@ export const genDiff = (pathToFileBefore, pathToFileAfter, format) => {
 
 export default () => {
   program
-    .version(version)
-    .description(description)
+    .version('1.1.1', '-V, --version', 'output the version number')
+    .description('Compares two configuration files and shows a difference.')
     .arguments('<firstConfig> <secondConfig>')
     .action((firstConfig, secondConfig) => {
-      console.log(genDiff(firstConfig, secondConfig, program.format));
+      console.log(genDiff(firstConfig, secondConfig, option.format));
     })
     .option('-f, --format [type]', 'output format', 'stylish')
     .parse(process.argv);
