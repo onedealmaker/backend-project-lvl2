@@ -9,6 +9,10 @@
   "engines": {
     "node": ">=14"
   },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {}
+  },
   "scripts": {
     "test": "npx jest"
   },
