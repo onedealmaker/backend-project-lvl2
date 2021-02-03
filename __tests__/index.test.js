@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { genDiff } from '../src/index';
 
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const getFixturePath = (filename) => path.join(process.cwd(), '__fixtures__', filename);
 const fileNames = [
   ['before.json', 'after.json'],
   ['before.yml', 'after.yml'],

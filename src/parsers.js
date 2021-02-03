@@ -4,7 +4,7 @@ import yaml from 'js-yaml';
 import ini from 'ini';
 
 const getJsonData = (absPath) => JSON.parse(fs.readFileSync(absPath, 'utf-8'));
-const getYamlData = (absPath) => yaml.safeLoad(fs.readFileSync(absPath, 'utf8'));
+const getYamlData = (absPath) => yaml.load(fs.readFileSync(absPath, 'utf8'));
 const getIniData = (absPath) => ini.parse(fs.readFileSync(absPath, 'utf-8'));
 
 export default (pathToFile) => {
