@@ -7,5 +7,4 @@ const formatDispatcher = {
   json: (abstractTree) => JSON.stringify(abstractTree),
 };
 
-
 export default formatDispatcher;
