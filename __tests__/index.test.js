@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import genDiff from '../src/index';
+import genDiff from '../src';
 
 const getFixturePath = (filename) => path.join(process.cwd(), '__fixtures__', filename);
 const fileNames = [

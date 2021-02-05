@@ -1,6 +1,6 @@
 import parse from './parsers';
 import buildDiff from './diffBuilder';
-import formatter from './formatters/index';
+import formatter from './formatters';
 
 const getData = (pathToFile) => parse(pathToFile);
 export default (pathToFileBefore, pathToFileAfter, format) => {
