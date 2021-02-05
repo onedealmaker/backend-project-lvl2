@@ -20,13 +20,13 @@
     "type": "git",
     "url": "git+https://github.com/onedealmaker/backend-project-lvl2.git"
   },
+  "type": "module",
   "author": "dealmaker",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/onedealmaker/backend-project-lvl2/issues"
   },
   "homepage": "https://github.com/onedealmaker/backend-project-lvl2#readme",
-  "type": "module",
   "dependencies": {
     "commander": "^7.0.0",
     "ini": "^2.0.0",
