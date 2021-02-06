@@ -12,12 +12,12 @@ const resultStylish = fs.readFileSync(getFixturePath('resultStylish.txt'), 'utf-
 const resultPlain = fs.readFileSync(getFixturePath('resultPlain.txt'), 'utf-8');
 const resultJSON = fs.readFileSync(getFixturePath('resultJSON.txt'), 'utf-8');
 
-test.each(fileNames)('generate difference (Stylish format)', (b, a) => {
-  expect(genDiff(getFixturePath(b), getFixturePath(a), 'stylish')).toBe(resultStylish);
-});
-test.each(fileNames)('generate difference (Plain format)', (b, a) => {
-  expect(genDiff(getFixturePath(b), getFixturePath(a), 'plain')).toBe(resultPlain);
-});
+// test.each(fileNames)('generate difference (Stylish format)', (b, a) => {
+//   expect(genDiff(getFixturePath(b), getFixturePath(a), 'stylish')).toBe(resultStylish);
+// });
+// test.each(fileNames)('generate difference (Plain format)', (b, a) => {
+//   expect(genDiff(getFixturePath(b), getFixturePath(a), 'plain')).toBe(resultPlain);
+// });
 test.each(fileNames)('generate difference (JSON format)', (b, a) => {
   expect(genDiff(getFixturePath(b), getFixturePath(a), 'json')).toBe(resultJSON);
 });

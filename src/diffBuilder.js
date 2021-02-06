@@ -39,7 +39,7 @@ const buildNode = (before, after, key, func) => {
 };
 
 const buildDiff = (before, after) => {
-  const currentKeys = Object.keys({ ...before, ...after });
+  const currentKeys = _.sortBy(Object.keys({ ...before, ...after }));
   return currentKeys.map((key) => buildNode(before, after, key, buildDiff));
 };
 
