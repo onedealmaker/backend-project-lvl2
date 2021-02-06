@@ -7,5 +7,6 @@ export default (pathToFileBefore, pathToFileAfter, format = 'stylish') => {
   const before = getData(pathToFileBefore);
   const after = getData(pathToFileAfter);
   const difference = buildDiff(before, after);
+  console.log(before, after);
   return formatter[format](difference);
 };
