@@ -1,13 +1,13 @@
 import _ from 'lodash';
 
-const getDifferences = (data1, data2) => {
+const getDifference = (data1, data2) => {
   const keysFromData1 = _.keys(data1);
   const keysFromData2 = _.keys(data2);
   const commonKeys = _.union(keysFromData1, keysFromData2);
   const sortedCommonKeys = _.sortBy(commonKeys);
-  const differences = sortedCommonKeys.map((item) => {
+  const difference = sortedCommonKeys.map((item) => {
     if (_.isPlainObject(data1[item]) && _.isPlainObject(data2[item])) {
-      return { name: item, children: getDifferences(data1[item], data2[item]), type: 'parent' };
+      return { name: item, children: getDifference(data1[item], data2[item]), type: 'nested' };
     }
     if (!_.has(data1, item)) {
       return { name: item, value: data2[item], type: 'added' };
@@ -24,12 +24,12 @@ const getDifferences = (data1, data2) => {
     }
     return { name: item, value: data1[item], type: 'unchanged' };
   });
-  return differences;
+  return difference;
 };
 
-const buildDifferencesTree = (data1, data2) => {
-  const differences = getDifferences(data1, data2);
-  return { type: 'root', children: differences };
+const buildDifferenceTree = (data1, data2) => {
+  const difference = getDifference(data1, data2);
+  return { type: 'root', children: difference };
 };
 
-export default buildDifferencesTree;
+export default buildDifferenceTree;
