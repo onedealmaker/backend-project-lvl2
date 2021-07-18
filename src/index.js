@@ -1,14 +1,18 @@
+import fs from 'fs';
+import path from 'path';
 import parse from './parsers';
 import buildDiff from './diffBuilder';
 import formatter from './formatters';
 
-const getData = (pathToFile) => parse(pathToFile);
+const getPath = (fileName) => path.resolve(process.cwd(), fileName);
+const getData = (fileName) => {
+  const filePath = getPath(fileName);
+  const extension = path.extname(filePath).slice(1);
+  return parse(fs.readFileSync(filePath, 'utf-8'), extension);
+};
 export default (pathToFileBefore, pathToFileAfter, format = 'stylish') => {
   const before = getData(pathToFileBefore);
   const after = getData(pathToFileAfter);
   const difference = buildDiff(before, after);
-  console.log(before, after);
-  console.log('before doge object', before.common.setting6.doge);
-  console.log('after objects', after.common.setting6.doge, after.group3.deep.id);
-  return formatter[format](difference);
+  return formatter(format, difference);
 };

@@ -1,27 +1,35 @@
 import _ from 'lodash';
 
-const addNewLine = '\n';
-const addTab = (depth, step = 2) => ' '.repeat(depth * step);
-
-const displayNode = (node, depth) => {
-  if (_.isObject(node)) {
-    const stringify = Object.keys(node).map((key) => `${addTab(depth + 2)}${key}: ${node[key]}`);
-    return `{${addNewLine}${stringify.join(addNewLine)}${addNewLine}${addTab(depth)}}`;
+const getSpace = (count) => ('    '.repeat(count));
+const getString = (value, count = 0) => {
+  if (!_.isObject(value)) {
+    return String(value);
   }
-  return node;
+  const explainedValue = _.keys(value).map((item) => `${getSpace(count)}    ${item}: ${getString(value[item], count + 1)}`);
+  return `{\n${explainedValue.join('\n')}\n${getSpace(count)}}`;
 };
+const getCommonString = (mark, value, name, count) => `${getSpace(count)}  ${mark} ${name}: ${getString(value, count + 1)}`;
+const getChangedString = (name, oldValue, newValue, count) => `${getSpace(count)}  - ${name}: ${getString(oldValue, count + 1)}\n ${getSpace(count)} + ${name}: ${getString(newValue, count + 1)}`;
 
-const displayNested = (absTree, depth = 0) => {
-  const refByStatus = {
-    deleted: (node, lvl) => `${addTab(lvl + 1)}- ${node.key}: ${displayNode(node.beforeValue, lvl + 2)}`,
-    added: (node, lvl) => `${addTab(lvl + 1)}+ ${node.key}: ${displayNode(node.afterValue, lvl + 2)}`,
-    unchanged: (node, lvl) => `${addTab(lvl + 2)}${node.key}: ${displayNode(node.value, lvl + 2)}`,
-    nested: (node, lvl) => `${addTab(lvl + 2)}${node.key}: ${displayNested(node.children, lvl + 2)}`,
-    changed: (node, lvl) => [[refByStatus.deleted(node, lvl)], [refByStatus.added(node, lvl)]],
-  };
-  const stringifyNodes = absTree.flatMap((node) => refByStatus[node.status](node, depth));
-  const result = stringifyNodes.join(addNewLine);
-  return `{${addNewLine}${result}${addNewLine}${addTab(depth)}}`;
+const stylish = (differences, count = 0) => {
+  const arrayOfDifferences = differences.map((item) => {
+    switch (item.type) {
+      case 'unchanged':
+        return getCommonString(' ', item.value, item.name, count);
+      case 'changed':
+        return getChangedString(item.name, item.value.oldValue, item.value.newValue, count);
+      case 'added':
+        return getCommonString('+', item.value, item.name, count);
+      case 'removed':
+        return getCommonString('-', item.value, item.name, count);
+      case 'parent':
+        return `${getSpace(count)}    ${item.name}: ${stylish(item.children, count + 1)}`;
+      default:
+        throw new Error(`Type ${item.type} of ${item.name} not recognized`);
+    }
+  });
+  return `{\n${arrayOfDifferences.join('\n')}\n${getSpace(count)}}`;
 };
+const renderStylish = (differences) => stylish(differences, 0);
 
-export default displayNested;
+export default renderStylish;

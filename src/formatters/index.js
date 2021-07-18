@@ -1,10 +1,8 @@
-import stylish from './stylish';
-import plain from './plain';
+import renderStylish from './stylish.js';
+import renderPlain from './plain.js';
+import renderJson from './json.js';
 
-const formatDispatcher = {
-  stylish: (abstractTree) => stylish(abstractTree),
-  plain: (abstractTree) => plain(abstractTree),
-  json: (abstractTree) => JSON.stringify(abstractTree),
-};
+const formatters = { stylish: renderStylish, plain: renderPlain, json: renderJson };
+const renderFormattedTree = (format, difference) => formatters[format](difference.children);
 
-export default formatDispatcher;
+export default renderFormattedTree;
