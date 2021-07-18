@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import parse from './parsers';
-import buildDiff from './diffBuilder';
-import formatter from './formatters';
+import parse from './parsers.js';
+import buildDiff from './diffBuilder.js';
+import formatter from './formatters/index.js';
 
 const getPath = (fileName) => path.resolve(process.cwd(), fileName);
 const getData = (fileName) => {
