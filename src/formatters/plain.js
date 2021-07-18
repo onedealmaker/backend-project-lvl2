@@ -29,6 +29,6 @@ const plain = (difference, nested = '') => {
     });
   return lines.join('\n');
 };
-const makePlain = (difference) => plain(difference, '');
+const renderPlain = (difference) => plain(difference, '');
 
-export default makePlain;
+export default renderPlain;
