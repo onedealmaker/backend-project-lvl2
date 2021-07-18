@@ -11,6 +11,7 @@ const filesToCompare = [
   { file1: 'before.json', file2: 'after.json' },
   { file1: 'before.yml', file2: 'after.yaml' },
   { file1: 'before.json', file2: 'after.yaml' },
+// { file1: 'before.ini', file2: 'after.ini' },
 ];
 
 const resultStylish = fs.readFileSync(getFixturePath('resultStylish.txt'), 'utf-8');
