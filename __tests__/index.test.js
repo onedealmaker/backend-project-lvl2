@@ -16,7 +16,7 @@ const filesToCompare = [
 
 const resultStylish = fs.readFileSync(getFixturePath('resultStylish.txt'), 'utf-8');
 const resultPlain = fs.readFileSync(getFixturePath('resultPlain.txt'), 'utf-8');
-const resultJSON = fs.readFileSync(getFixturePath('resultJSON.txt'), 'utf-8');
+const resultJson = fs.readFileSync(getFixturePath('resultJSON.txt'), 'utf-8');
 
 test.each(filesToCompare)('genDiff($before, $after)', ({ before, after }) => {
   expect(genDiff(getFixturePath(before), getFixturePath(after)))
@@ -26,5 +26,5 @@ test.each(filesToCompare)('genDiff($before, $after)', ({ before, after }) => {
   expect(genDiff(getFixturePath(before), getFixturePath(after), 'plain'))
     .toEqual(resultPlain);
   expect(genDiff(getFixturePath(before), getFixturePath(after), 'json'))
-    .toEqual(resultJSON);
+    .toEqual(resultJson);
 });
